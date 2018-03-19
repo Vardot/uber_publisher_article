@@ -1,5 +1,5 @@
 {
-  "name": "vardot/uber_publisher_core",
+  "name": "vardot/uber_publisher_article",
   "description": "Main functionality for the Uber Publisher distribution.",
   "type": "drupal-module",
   "license": "GPL-2.0+",
