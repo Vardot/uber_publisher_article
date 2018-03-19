@@ -1,6 +1,6 @@
 {
   "name": "vardot/uber_publisher_article",
-  "description": "Main functionality for the Uber Publisher distribution.",
+  "description": "Uber Publisher Article content like news, press releases or blog posts.",
   "type": "drupal-module",
   "license": "GPL-2.0+",
   "minimum-stability": "dev",
