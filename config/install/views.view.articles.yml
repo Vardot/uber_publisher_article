@@ -873,6 +873,7 @@ display:
         row: true
         filters: false
         filter_groups: false
+        relationships: false
       pager:
         type: some
         options:
@@ -963,45 +964,6 @@ display:
           entity_type: node
           entity_field: type
           plugin_id: bundle
-        views_exclude_previous:
-          id: views_exclude_previous
-          table: node
-          field: views_exclude_previous
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: 'not in'
-          value:
-            node_load: node_load
-          group: 1
-          exposed: false
-          expose:
-            operator_id: ''
-            label: ''
-            description: ''
-            use_operator: false
-            operator: ''
-            identifier: ''
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          entity_type: node
-          plugin_id: views_exclude_previous
         field_section_target_id:
           id: field_section_target_id
           table: node__field_section
@@ -1086,10 +1048,59 @@ display:
           entity_type: node
           entity_field: langcode
           plugin_id: language
+        entityqueue_relationship:
+          id: entityqueue_relationship
+          table: node_field_data
+          field: entityqueue_relationship
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value: '0'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          plugin_id: entity_queue_in_queue
       filter_groups:
         operator: AND
         groups:
           1: AND
+      relationships:
+        entityqueue_relationship:
+          id: entityqueue_relationship
+          table: node_field_data
+          field: entityqueue_relationship
+          relationship: none
+          group_type: group
+          admin_label: 'Content queue'
+          required: false
+          limit_queue: promoted_splash_area
+          entity_type: node
+          plugin_id: entity_queue
     cache_metadata:
       max-age: -1
       contexts:
@@ -1099,8 +1110,11 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
+        - 'config:entityqueue.entity_queue.promoted_splash_area'
         - 'config:field.storage.node.body'
         - 'config:field.storage.node.field_image'
+        - entity_field_info
+        - views_data
   economy_articles:
     display_plugin: block
     id: economy_articles
@@ -1520,45 +1534,6 @@ display:
           entity_type: node
           entity_field: type
           plugin_id: bundle
-        views_exclude_previous:
-          id: views_exclude_previous
-          table: node
-          field: views_exclude_previous
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: 'not in'
-          value:
-            node_load: node_load
-          group: 1
-          exposed: false
-          expose:
-            operator_id: ''
-            label: ''
-            description: ''
-            use_operator: false
-            operator: ''
-            identifier: ''
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          entity_type: node
-          plugin_id: views_exclude_previous
         field_section_target_id:
           id: field_section_target_id
           table: node__field_section
@@ -2496,6 +2471,7 @@ display:
         row: false
         filters: false
         filter_groups: false
+        relationships: false
       pager:
         type: some
         options:
@@ -2586,45 +2562,6 @@ display:
           entity_type: node
           entity_field: type
           plugin_id: bundle
-        views_exclude_previous:
-          id: views_exclude_previous
-          table: node
-          field: views_exclude_previous
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: 'not in'
-          value:
-            node_load: node_load
-          group: 1
-          exposed: false
-          expose:
-            operator_id: ''
-            label: ''
-            description: ''
-            use_operator: false
-            operator: ''
-            identifier: ''
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          entity_type: node
-          plugin_id: views_exclude_previous
         field_section_target_id:
           id: field_section_target_id
           table: node__field_section
@@ -2709,10 +2646,59 @@ display:
           entity_type: node
           entity_field: langcode
           plugin_id: language
+        entityqueue_relationship:
+          id: entityqueue_relationship
+          table: node_field_data
+          field: entityqueue_relationship
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value: '0'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          plugin_id: entity_queue_in_queue
       filter_groups:
         operator: AND
         groups:
           1: AND
+      relationships:
+        entityqueue_relationship:
+          id: entityqueue_relationship
+          table: node_field_data
+          field: entityqueue_relationship
+          relationship: none
+          group_type: group
+          admin_label: 'Content queue'
+          required: false
+          limit_queue: promoted_splash_area
+          entity_type: node
+          plugin_id: entity_queue
     cache_metadata:
       max-age: -1
       contexts:
@@ -2722,8 +2708,11 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
+        - 'config:entityqueue.entity_queue.promoted_splash_area'
         - 'config:field.storage.node.body'
         - 'config:field.storage.node.field_image'
+        - entity_field_info
+        - views_data
   most_viewed_articles:
     display_plugin: block
     id: most_viewed_articles
@@ -2901,6 +2890,7 @@ display:
         row: false
         filters: false
         filter_groups: false
+        relationships: false
       block_category: Articles
       block_description: Politics
       link_display: custom_url
@@ -2960,45 +2950,6 @@ display:
           entity_type: node
           entity_field: type
           plugin_id: bundle
-        views_exclude_previous:
-          id: views_exclude_previous
-          table: node
-          field: views_exclude_previous
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: 'not in'
-          value:
-            node_load: node_load
-          group: 1
-          exposed: false
-          expose:
-            operator_id: ''
-            label: ''
-            description: ''
-            use_operator: false
-            operator: ''
-            identifier: ''
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          entity_type: node
-          plugin_id: views_exclude_previous
         field_section_target_id:
           id: field_section_target_id
           table: node__field_section
@@ -3083,6 +3034,43 @@ display:
           entity_type: node
           entity_field: langcode
           plugin_id: language
+        entityqueue_relationship:
+          id: entityqueue_relationship
+          table: node_field_data
+          field: entityqueue_relationship
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value: '0'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          plugin_id: entity_queue_in_queue
       filter_groups:
         operator: AND
         groups:
@@ -3111,6 +3099,18 @@ display:
             group_field_function: ''
           advanced_fieldset:
             advanced: false
+      relationships:
+        entityqueue_relationship:
+          id: entityqueue_relationship
+          table: node_field_data
+          field: entityqueue_relationship
+          relationship: none
+          group_type: group
+          admin_label: 'Content queue'
+          required: false
+          limit_queue: promoted_splash_area
+          entity_type: node
+          plugin_id: entity_queue
     cache_metadata:
       max-age: -1
       contexts:
@@ -3120,8 +3120,11 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
+        - 'config:entityqueue.entity_queue.promoted_splash_area'
         - 'config:field.storage.node.body'
         - 'config:field.storage.node.field_image'
+        - entity_field_info
+        - views_data
   promoted_splash_area:
     display_plugin: block
     id: promoted_splash_area
@@ -3557,6 +3560,45 @@ display:
           entity_type: node
           entity_field: langcode
           plugin_id: language
+        views_exclude_previous:
+          id: views_exclude_previous
+          table: node
+          field: views_exclude_previous
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: 'not in'
+          value:
+            node_load: node_load
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          plugin_id: views_exclude_previous
       filter_groups:
         operator: AND
         groups:
@@ -3904,6 +3946,7 @@ display:
         row: false
         filters: false
         filter_groups: false
+        relationships: false
       pager:
         type: some
         options:
@@ -3994,45 +4037,6 @@ display:
           entity_type: node
           entity_field: type
           plugin_id: bundle
-        views_exclude_previous:
-          id: views_exclude_previous
-          table: node
-          field: views_exclude_previous
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: 'not in'
-          value:
-            node_load: node_load
-          group: 1
-          exposed: false
-          expose:
-            operator_id: ''
-            label: ''
-            description: ''
-            use_operator: false
-            operator: ''
-            identifier: ''
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          entity_type: node
-          plugin_id: views_exclude_previous
         field_section_target_id:
           id: field_section_target_id
           table: node__field_section
@@ -4117,10 +4121,59 @@ display:
           entity_type: node
           entity_field: langcode
           plugin_id: language
+        entityqueue_relationship:
+          id: entityqueue_relationship
+          table: node_field_data
+          field: entityqueue_relationship
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value: '0'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          plugin_id: entity_queue_in_queue
       filter_groups:
         operator: AND
         groups:
           1: AND
+      relationships:
+        entityqueue_relationship:
+          id: entityqueue_relationship
+          table: node_field_data
+          field: entityqueue_relationship
+          relationship: none
+          group_type: group
+          admin_label: 'Content queue'
+          required: false
+          limit_queue: promoted_splash_area
+          entity_type: node
+          plugin_id: entity_queue
     cache_metadata:
       max-age: -1
       contexts:
@@ -4130,8 +4183,11 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
+        - 'config:entityqueue.entity_queue.promoted_splash_area'
         - 'config:field.storage.node.body'
         - 'config:field.storage.node.field_image'
+        - entity_field_info
+        - views_data
   technology_articles:
     display_plugin: block
     id: technology_articles
@@ -4461,6 +4517,7 @@ display:
         row: false
         filters: false
         filter_groups: false
+        relationships: false
       pager:
         type: some
         options:
@@ -4557,45 +4614,6 @@ display:
           entity_type: node
           entity_field: type
           plugin_id: bundle
-        views_exclude_previous:
-          id: views_exclude_previous
-          table: node
-          field: views_exclude_previous
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: 'not in'
-          value:
-            node_load: node_load
-          group: 1
-          exposed: false
-          expose:
-            operator_id: ''
-            label: ''
-            description: ''
-            use_operator: false
-            operator: ''
-            identifier: ''
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          entity_type: node
-          plugin_id: views_exclude_previous
         field_section_target_id:
           id: field_section_target_id
           table: node__field_section
@@ -4680,10 +4698,59 @@ display:
           entity_type: node
           entity_field: langcode
           plugin_id: language
+        entityqueue_relationship:
+          id: entityqueue_relationship
+          table: node_field_data
+          field: entityqueue_relationship
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value: '0'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          plugin_id: entity_queue_in_queue
       filter_groups:
         operator: AND
         groups:
           1: AND
+      relationships:
+        entityqueue_relationship:
+          id: entityqueue_relationship
+          table: node_field_data
+          field: entityqueue_relationship
+          relationship: none
+          group_type: group
+          admin_label: 'Content queue'
+          required: false
+          limit_queue: promoted_splash_area
+          entity_type: node
+          plugin_id: entity_queue
     cache_metadata:
       max-age: -1
       contexts:
@@ -4693,5 +4760,8 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
+        - 'config:entityqueue.entity_queue.promoted_splash_area'
         - 'config:field.storage.node.body'
         - 'config:field.storage.node.field_image'
+        - entity_field_info
+        - views_data
