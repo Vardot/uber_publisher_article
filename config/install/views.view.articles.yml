@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.horizontal_media_teaser_medium
     - core.entity_view_mode.node.horizontal_media_teaser_small
     - core.entity_view_mode.node.text_teaser_small
     - core.entity_view_mode.node.tout_medium
@@ -16,10 +17,12 @@ dependencies:
     - node.type.article
     - taxonomy.vocabulary.section
   content:
-    - 'taxonomy_term:section:83f54c82-99d6-4bb7-8778-e5ed7a57c69f'
-    - 'taxonomy_term:section:bafb653a-cc06-42f2-b2da-c334bed63f1f'
-    - 'taxonomy_term:section:d6f7ddfb-c910-4671-8022-190c1d187a58'
-    - 'taxonomy_term:section:f0acd78e-36a1-4279-9f89-d1b38fa8b29f'
+    - 'taxonomy_term:section:44ba090b-70ff-4c01-bcf5-3b0a3ecd7e95'
+    - 'taxonomy_term:section:60c9208d-6a19-4e6c-a880-9ea9a6639eaa'
+    - 'taxonomy_term:section:7765ed7d-06d6-4f37-a26f-c5ac4a05c9f2'
+    - 'taxonomy_term:section:78952062-48f7-4cb2-ba05-66ac4f3694e5'
+    - 'taxonomy_term:section:970882fb-874d-4986-9295-702aec58ec46'
+    - 'taxonomy_term:section:d4226f65-a221-4983-8745-9e5948742d54'
   module:
     - ds
     - entityqueue
@@ -28,9 +31,10 @@ dependencies:
     - taxonomy
     - text
     - user
+    - views_bootstrap
     - views_exclude_previous
 _core:
-  default_config_hash: FNdH5jtV3dzwNUa8dpOL8T9Jyr0OCM98fw9dUVadXbg
+  default_config_hash: LIOai8EypTF017FQYinQppa5-QEiS4j9DhJAXTcAEpw
 id: articles
 label: Articles
 module: views
@@ -90,7 +94,7 @@ display:
           alternating_fieldset:
             alternating: true
             allpages: true
-            item_0: vertical_media_teaser_medium
+            item_0: vertical_media_teaser_large
             item_1: horizontal_media_teaser_small
             item_2: horizontal_media_teaser_small
             item_3: horizontal_media_teaser_small
@@ -865,8 +869,8 @@ display:
         use_more: false
         use_more_always: false
         use_more_text: false
-        style: false
-        row: false
+        style: true
+        row: true
         filters: false
         filter_groups: false
       pager:
@@ -1007,7 +1011,7 @@ display:
           admin_label: ''
           operator: or
           value:
-            133: 133
+            11: 11
           group: 1
           exposed: false
           expose:
@@ -1042,6 +1046,46 @@ display:
           hierarchy: false
           error_message: true
           plugin_id: taxonomy_index_tid
+        langcode:
+          id: langcode
+          table: node_field_data
+          field: langcode
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: in
+          value:
+            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          entity_field: langcode
+          plugin_id: language
       filter_groups:
         operator: AND
         groups:
@@ -1390,7 +1434,6 @@ display:
       style:
         type: default
         options:
-          grouping: {  }
           row_class: ''
           default_row_class: true
           uses_fields: false
@@ -1401,7 +1444,7 @@ display:
           view_mode: tout_medium
           alternating_fieldset:
             alternating: true
-            allpages: false
+            allpages: true
             item_0: horizontal_media_teaser_medium
             item_1: horizontal_media_teaser_medium
             item_2: horizontal_media_teaser_medium
@@ -1560,6 +1603,46 @@ display:
           hierarchy: false
           error_message: true
           plugin_id: taxonomy_index_tid
+        langcode:
+          id: langcode
+          table: node_field_data
+          field: langcode
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: in
+          value:
+            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          entity_field: langcode
+          plugin_id: language
       filter_groups:
         operator: AND
         groups:
@@ -1908,18 +1991,24 @@ display:
         filters: false
         filter_groups: false
         empty: false
-      css_class: 'post-style-grid row'
+      css_class: post-style-grid
       pager:
         type: some
         options:
           items_per_page: 4
           offset: 0
       style:
-        type: default
+        type: views_bootstrap_grid
         options:
-          row_class: 'col col-sm-6 col-xs12'
+          row_class: ''
           default_row_class: true
           uses_fields: false
+          alignment: horizontal
+          columns: '2'
+          col_xs: col-xs-12
+          col_sm: col-sm-6
+          col_md: col-md-6
+          col_lg: col-lg-6
       row:
         type: 'entity:node'
         options:
@@ -2006,6 +2095,46 @@ display:
           entity_type: node
           entity_field: type
           plugin_id: bundle
+        langcode:
+          id: langcode
+          table: node_field_data
+          field: langcode
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: in
+          value:
+            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          entity_field: langcode
+          plugin_id: language
       filter_groups:
         operator: AND
         groups:
@@ -2390,11 +2519,10 @@ display:
           alternating_fieldset:
             alternating: true
             allpages: true
-            item_0: vertical_media_teaser_medium
+            item_0: vertical_media_teaser_large
             item_1: horizontal_media_teaser_small
             item_2: horizontal_media_teaser_small
             item_3: horizontal_media_teaser_small
-            item_4: horizontal_media_teaser_small
           grouping_fieldset:
             group: false
             group_field: node_field_data|created
@@ -2506,7 +2634,7 @@ display:
           admin_label: ''
           operator: or
           value:
-            132: 132
+            14: 14
           group: 1
           exposed: false
           expose:
@@ -2541,6 +2669,46 @@ display:
           hierarchy: false
           error_message: true
           plugin_id: taxonomy_index_tid
+        langcode:
+          id: langcode
+          table: node_field_data
+          field: langcode
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: in
+          value:
+            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          entity_field: langcode
+          plugin_id: language
       filter_groups:
         operator: AND
         groups:
@@ -2658,6 +2826,46 @@ display:
           entity_type: node
           entity_field: type
           plugin_id: bundle
+        langcode:
+          id: langcode
+          table: node_field_data
+          field: langcode
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: in
+          value:
+            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          entity_field: langcode
+          plugin_id: language
       filter_groups:
         operator: AND
         groups:
@@ -2689,8 +2897,8 @@ display:
         use_more: false
         use_more_always: false
         use_more_text: false
-        style: true
-        row: true
+        style: false
+        row: false
         filters: false
         filter_groups: false
       block_category: Articles
@@ -2835,10 +3043,74 @@ display:
           hierarchy: false
           error_message: true
           plugin_id: taxonomy_index_tid
+        langcode:
+          id: langcode
+          table: node_field_data
+          field: langcode
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: in
+          value:
+            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          entity_field: langcode
+          plugin_id: language
       filter_groups:
         operator: AND
         groups:
           1: AND
+      style:
+        type: default
+        options:
+          row_class: ''
+          default_row_class: true
+          uses_fields: false
+      row:
+        type: 'ds_entity:node'
+        options:
+          relationship: none
+          view_mode: horizontal_media_teaser_small
+          alternating_fieldset:
+            alternating: true
+            allpages: true
+            item_0: vertical_media_teaser_medium
+            item_1: horizontal_media_teaser_small
+            item_2: horizontal_media_teaser_small
+            item_3: horizontal_media_teaser_small
+          grouping_fieldset:
+            group: false
+            group_field: node_field_data|created
+            group_field_function: ''
+          advanced_fieldset:
+            advanced: false
     cache_metadata:
       max-age: -1
       contexts:
@@ -2997,6 +3269,46 @@ display:
           entity_type: node
           entity_field: type
           plugin_id: bundle
+        langcode:
+          id: langcode
+          table: node_field_data
+          field: langcode
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: in
+          value:
+            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          entity_field: langcode
+          plugin_id: language
       filter_groups:
         operator: AND
         groups:
@@ -3205,6 +3517,46 @@ display:
           entity_type: node
           entity_field: type
           plugin_id: bundle
+        langcode:
+          id: langcode
+          table: node_field_data
+          field: langcode
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: in
+          value:
+            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          entity_field: langcode
+          plugin_id: language
       filter_groups:
         operator: AND
         groups:
@@ -3576,7 +3928,7 @@ display:
         type: 'ds_entity:node'
         options:
           relationship: none
-          view_mode: vertical_media_teaser_medium
+          view_mode: horizontal_media_teaser_medium
           alternating_fieldset:
             alternating: true
             allpages: true
@@ -3584,7 +3936,6 @@ display:
             item_1: horizontal_media_teaser_medium
             item_2: horizontal_media_teaser_medium
             item_3: horizontal_media_teaser_medium
-            item_4: horizontal_media_teaser_medium
           grouping_fieldset:
             group: false
             group_field: node_field_data|created
@@ -3691,7 +4042,7 @@ display:
           admin_label: ''
           operator: or
           value:
-            131: 131
+            12: 12
           group: 1
           exposed: false
           expose:
@@ -3726,6 +4077,46 @@ display:
           hierarchy: false
           error_message: true
           plugin_id: taxonomy_index_tid
+        langcode:
+          id: langcode
+          table: node_field_data
+          field: langcode
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: in
+          value:
+            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          entity_field: langcode
+          plugin_id: language
       filter_groups:
         operator: AND
         groups:
@@ -4070,7 +4461,6 @@ display:
         row: false
         filters: false
         filter_groups: false
-        css_class: false
       pager:
         type: some
         options:
@@ -4086,11 +4476,17 @@ display:
       use_more_always: true
       use_more_text: 'Read more'
       style:
-        type: default
+        type: views_bootstrap_grid
         options:
-          row_class: 'col col-sm-6 col-xs12'
+          row_class: ''
           default_row_class: true
           uses_fields: false
+          alignment: horizontal
+          columns: '2'
+          col_xs: col-xs-12
+          col_sm: col-sm-6
+          col_md: col-md-6
+          col_lg: col-lg-6
       row:
         type: 'ds_entity:node'
         options:
@@ -4209,7 +4605,7 @@ display:
           admin_label: ''
           operator: or
           value:
-            121: 121
+            13: 13
           group: 1
           exposed: false
           expose:
@@ -4244,6 +4640,46 @@ display:
           hierarchy: false
           error_message: true
           plugin_id: taxonomy_index_tid
+        langcode:
+          id: langcode
+          table: node_field_data
+          field: langcode
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: in
+          value:
+            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          entity_field: langcode
+          plugin_id: language
       filter_groups:
         operator: AND
         groups:
